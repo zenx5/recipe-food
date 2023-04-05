@@ -1,13 +1,19 @@
 import Link from "next/link";
 
-export default function ProductListPage () {
+type productType = {
+    id: number,
+    name: string,
+    price: number
+}
 
-    return(
+export default async function ProductListPage () {
+    const response = await fetch('http://localhost:3000/api/products')
+    const products = await response.json()
+
+    return(<div>
         <ul>
-            <li><Link href={`/products/1`}>Producto 1</Link></li>
-            <li><Link href={`/products/2`}>Producto 2</Link></li>
-            <li><Link href={`/products/3`}>Producto 3</Link></li>
-            <li><Link href={`/products/4`}>Producto 4</Link></li>
+            { products.map( (product:productType) => (<li key={product.id}><Link href={`/products/${product.id}`}>{product.name}</Link></li>) )}
         </ul>
+    </div>
     )
 }

@@ -3,11 +3,14 @@ interface Params {
     id: number
 }
 
-export default function ProductPage ({ params }:{params:Params}) {
+export default async function ProductPage ({ params }:{params:Params}) {
     const { id } = params
+    const response = await fetch(`http://localhost:3000/api/products/${id}`)
+    const product = await response.json()
 
     return <div>
-        <p>Producto con ID: {id}</p>
+        <p>Name: { product.name }</p>
+        <p>Price: { product.price }</p>
         <Link href='/products'>Volver a Productos</Link>
     </div>
 
