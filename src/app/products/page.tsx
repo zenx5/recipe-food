@@ -1,10 +1,5 @@
 import Link from "next/link";
-
-type productType = {
-    id: number,
-    name: string,
-    price: number
-}
+import { productType } from "../types";
 
 export default async function ProductListPage () {
     const response = await fetch('http://localhost:3000/api/products')
