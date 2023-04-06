@@ -5,5 +5,6 @@ export type Params = {
 export type productType = {
     id: number,
     name: string,
-    price: number
+    price: number,
+    active: boolean
 }
