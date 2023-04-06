@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ListParent from "../components/ListParent";
+import { ListParent }from "../components";
 
 export default function RecipeListPage () {
 
