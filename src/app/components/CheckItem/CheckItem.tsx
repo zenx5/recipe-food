@@ -6,7 +6,7 @@ export default function CheckItem ({ id, defaultState }:{ id:number, defaultStat
     const [active, setActive] = useState( defaultState )
 
     const handlerToggleActive = async () => {
-        const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+        const response = await fetch(`${process.env.HOST}/api/products/${id}`, {
             method:'put',
             body: JSON.stringify({
                 active: !active
