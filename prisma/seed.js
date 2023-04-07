@@ -1,19 +1,18 @@
 // prisma/seed.ts
-
-import { PrismaClient } from '@prisma/client';
+const { PrismaClient } = require('@prisma/client')
 
 // initialize Prisma Client
 const prisma = new PrismaClient();
 
 const productsFake = [
-    { id: 1, name: "Arroz", price: 1.99 },
-    { id: 2, name: "Pasta", price: 2.39 },
-    { id: 3, name: "Harina Pan", price: 0.99 },
-    { id: 4, name: "Harina de Trigo", price: 1.99 },
-    { id: 5, name: "Azucar", price: 1.75 },
-    { id: 6, name: "Cafe", price: 4.99 },
-    { id: 7, name: "Carne Molida", price: 3.99 },
-    { id: 8, name: "Huevos", price: 2.99 }
+    { id: 1, name: "Arroz", price: 1.99, isPackaged: true },
+    { id: 2, name: "Pasta", price: 2.39, isPackaged: true },
+    { id: 3, name: "Harina Pan", price: 0.99, isPackaged: true },
+    { id: 4, name: "Harina de Trigo", price: 1.99, isPackaged: true },
+    { id: 5, name: "Azucar", price: 1.75, isPackaged: true },
+    { id: 6, name: "Cafe", price: 4.99, isPackaged: true },
+    { id: 7, name: "Carne Molida", price: 3.99, isPackaged: false },
+    { id: 8, name: "Huevos", price: 0.5, isPackaged: true },
 ];
 
 async function main() {
