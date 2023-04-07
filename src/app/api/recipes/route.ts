@@ -44,6 +44,6 @@ const recipes = [
     }
 ]
 
-export default function GET (request:NextRequest) {
+export async function GET (request:Request) {
     return NextResponse.json( recipes )
 }

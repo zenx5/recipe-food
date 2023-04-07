@@ -44,7 +44,7 @@ const recipes = [
     }
 ]
 
-export default function GET (request:NextRequest, { params }:{ params:any }) {
+export async function GET (request:NextRequest, { params }:{ params:any }) {
     const { id } = params
     return NextResponse.json( recipes.find( recipe => recipe.id == id ) )
 }
