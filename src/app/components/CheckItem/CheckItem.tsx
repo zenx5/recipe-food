@@ -4,9 +4,9 @@ import styles from './CheckItem.module.css'
 
 export default function CheckItem ({ id, defaultState }:{ id:number, defaultState:Boolean }) {
     const [active, setActive] = useState( defaultState )
-
+    const { host } = document.location
     const handlerToggleActive = async () => {
-        const response = await fetch(`${process.env.HOST}/api/products/${id}`, {
+        const response = await fetch(`http://${host}/api/products/${id}`, {
             method:'put',
             body: JSON.stringify({
                 active: !active
