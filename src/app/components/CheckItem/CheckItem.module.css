@@ -1,0 +1,17 @@
+.active {
+    display: flexblock;
+    width: 20px !important;
+    height: 20px !important;
+    border: 1px solid #a0a0a0;
+    border-radius: 5px;
+    background-color: #a0a0a0;
+}
+
+.deactive {
+    display: flex;
+    width: 20px !important;
+    height: 20px !important;
+    border: 1px solid #a0a0a0;
+    border-radius: 5px;
+    background-color: white;
+}

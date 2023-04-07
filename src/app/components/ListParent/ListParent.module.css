@@ -1,0 +1,10 @@
+.ul {
+    list-style: none;
+}
+
+.ul a {
+    text-decoration: none;
+    width: 100%;
+}
+
+
