@@ -15,5 +15,5 @@ model Product {
   name        String
   price       Float
   active      Boolean @default(false)
-  isPackaged  Boolean @default(false)
+  quantity    String
 }
