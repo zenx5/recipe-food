@@ -15,9 +15,9 @@ export async function GET(request: Request, { params }:{params:Params}) {
             id: parseInt(id)
         }
     })
-    console.log(product)
 
-    return new Response( JSON.stringify(product) )
+    prisma.$disconnect()
+    return NextResponse.json(product)
 }
 
 export async function PUT(request: NextRequest, { params }:{params:Params}) {
@@ -29,9 +29,8 @@ export async function PUT(request: NextRequest, { params }:{params:Params}) {
         },
         data
     })
-    
 
-
+    prisma.$disconnect()
     return NextResponse.json(product)
 }
 
