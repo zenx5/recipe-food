@@ -1,6 +1,4 @@
-interface Params {
-    id: number
-}
+import { Params } from "@/app/types"
 
 export default function RecipeEditPage ({ params }:{params:Params}) {
     const { id } = params

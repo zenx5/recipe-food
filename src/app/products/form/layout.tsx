@@ -1,8 +1,10 @@
+import { FormProduct } from "@/app/components";
+
 export default function ProductFormLayout ({ children }:{children:any}) {
 
+
     return <div>
-        <p>este es el formularion para los productos</p>
-        { children }
+        { children ? <FormProduct product={{}}/> : children }
     </div>
 
 }
