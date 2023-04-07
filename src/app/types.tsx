@@ -6,5 +6,6 @@ export type productType = {
     id: number,
     name: string,
     price: number,
-    active: boolean
+    active: boolean,
+    isPackaged: boolean
 }

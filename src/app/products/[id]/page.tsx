@@ -7,7 +7,7 @@ type Params = {
 
 export default async function ProductPage ({ params }:{params:Params}) {
     const { id } = params
-    const response = await fetch(`http://localhost:3000/api/products/${id}`, { cache:'no-cache' })
+    const response = await fetch(`${process.env.HOST}/api/products/${id}`, { cache:'no-cache' })
     const product:any = await response.json()
 
     return <div className={styles.layout}>
