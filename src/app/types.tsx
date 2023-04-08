@@ -7,7 +7,7 @@ export type productType = {
     name: string,
     price: number,
     active: boolean,
-    quantity: number
+    quantity: string
 }
 
 export type recipeType = {
