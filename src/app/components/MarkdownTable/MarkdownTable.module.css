@@ -1,0 +1,18 @@
+.table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #ccc;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.table td {
+    padding: 2px;
+}
