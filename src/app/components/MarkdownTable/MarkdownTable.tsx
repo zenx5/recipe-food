@@ -1,7 +1,9 @@
+import styles from './MarkdownTable.module.css';
 
 export default function MarkdownTable ({ content }:{ content:string })  {
   // Separar las filas
   const rows = content.split('\n');
+  let maxCells = 0;
 
   // Crear una fila para cada una
   const tableRows = rows.map((row, index) => {
@@ -9,6 +11,7 @@ export default function MarkdownTable ({ content }:{ content:string })  {
 
     // Las celdas de la primera fila son las cabeceras
     if (index === 0) {
+      maxCells = cells.length;
       return (
         <tr key={index}>
           {cells.map((cell, index) => (
@@ -17,10 +20,14 @@ export default function MarkdownTable ({ content }:{ content:string })  {
         </tr>
       );
     }
+    if( index === 1 ) return;
 
     // Las celdas de las demás filas son los datos
     return (
       <tr key={index}>
+        {Array( maxCells - cells.length ).fill(1).map( (cell, index) =>  (
+          <td key={`fill-${index}`}></td>
+        )) }
         {cells.map((cell, index) => (
           <td key={index}>{cell}</td>
         ))}
@@ -30,7 +37,7 @@ export default function MarkdownTable ({ content }:{ content:string })  {
 
   // Crear la tabla completa
   return (
-    <table>
+    <table className={styles.table}>
       <tbody>
         {tableRows}
       </tbody>
