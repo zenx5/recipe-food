@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MarkdownTable } from "../components";
 import { generateShoppingList, generateMenu } from "./actions";
 
@@ -25,6 +26,9 @@ export default async function CalculatePage () {
         <p>{menu}</p>
         <div style={{ marginTop:15 }}>
             <MarkdownTable content={menu} />
+        </div>
+        <div style={{ display:'flex', justifyContent:'center', alignItems:'center', marginTop:'50px' }}>
+            <Link href='/products' className='button'>Volver</Link>
         </div>
     </div>
 }
