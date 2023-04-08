@@ -11,14 +11,18 @@ export default async function CalculatePage () {
     const responseProducts = await fetch(`${process.env.HOST}/api/products`)
     const products = await responseProducts.json()
 
-    const list = await generateShoppingList(products, recipes)
-    const menu = await generateMenu(list, recipes);
+    const [prompt1, list] = await generateShoppingList(products, recipes)
+    const [prompt2, menu] = await generateMenu(list, recipes);
 
 
     return <div>
+        <p>{prompt1}</p>
+        <p>{list}</p>
         <div style={{ marginTop:15, marginBottom:15 }}>
             <MarkdownTable content={list} />
         </div>
+        <p>{prompt2}</p>
+        <p>{menu}</p>
         <div style={{ marginTop:15 }}>
             <MarkdownTable content={menu} />
         </div>

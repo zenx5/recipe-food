@@ -13,5 +13,6 @@ export type productType = {
 export type recipeType = {
     id: number,
     name: string,
+    type: Array<string>,
     ingredients: Array<string>
 }
