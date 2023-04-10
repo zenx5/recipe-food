@@ -5,7 +5,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 const prisma = new PrismaClient()
 
 interface Params {
-    id: number
+    id: number|string
 }
 
 export async function GET(request: Request, { params }:{params:Params}) {
@@ -34,4 +34,22 @@ export async function PUT(request: NextRequest, { params }:{params:Params}) {
     return NextResponse.json(product)
 }
 
+export async function DELETE(request: NextRequest, { params }:{params:Params}) {
+    let product;
+    const { id } = params;
+
+    try{
+        product = await prisma.product.delete({
+            where: {
+                id: parseInt( id )
+            }
+        })
+    } catch ( error ) {
+        product = error
+    } finally {
+        prisma.$disconnect()
+    }
+
+    return NextResponse.json(product)
+}
 

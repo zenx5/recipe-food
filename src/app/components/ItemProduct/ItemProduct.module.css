@@ -27,3 +27,8 @@
     color: #303030;
     text-decoration: none;
 }
+
+.actions {
+    display: flex;
+    align-items: center;
+}

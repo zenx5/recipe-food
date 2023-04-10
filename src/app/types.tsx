@@ -7,11 +7,12 @@ export type productType = {
     name: string,
     price: number,
     active: boolean,
-    quantity: number
+    quantity: string
 }
 
 export type recipeType = {
     id: number,
     name: string,
+    type: Array<string>,
     ingredients: Array<string>
 }
