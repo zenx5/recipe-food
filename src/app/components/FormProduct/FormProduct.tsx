@@ -1,18 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { productType } from "@/app/types";
 import { useState } from "react";
 
 import styles from './FormProduct.module.css'
 
 export default function FormProduct ({ product }:{ product:productType }) {
-    console.log(product)
     const {
         id=0,
         name:nameDefault = '',
         price:priceDefault = 0,
         active:activeDefault = false,
-        quantity:quantityDefault = 0
+        quantity:quantityDefault = ''
     } = product
 
     const [name, setName] = useState(nameDefault)
@@ -78,6 +78,7 @@ export default function FormProduct ({ product }:{ product:productType }) {
         </div>
         <div className={styles.row}>
             <button className="button">Save</button>
+            <Link className="button" href={ id ? `/products/${id}` : '/products' }>Back</Link>
         </div>
     </form>
 }
