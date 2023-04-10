@@ -1,50 +1,34 @@
+import Link from "next/link";
 import { MarkdownTable } from "../components";
-import { productType } from "../types"
+import { generateShoppingList, generateMenu } from "./actions";
 
 export default async function CalculatePage () {
-    let recipeList = []
-    let productList = []
-    let prompt = `Quisiera que por favor me ayudes a optimizar mis compras para un mes entero teniendo en consideración varias cosas:
-    te dare una lista de productos con sus precios; tambien te dare mi presupuestos que es de 800$. 
-    A continuación tambien te dare una lista de posibles platos que quisiera preparar a lo largo de ese mes con 
-    sus respectivos ingredientes (considerar que estas son planteadas para una sola persona):`;
 
     // Recipes
-    const responseRecipes = await fetch(`${process.env.HOST}/api/recipes`, { cache: 'no-cache' })
+    const responseRecipes = await fetch(`${process.env.HOST}/api/recipes`)
     const recipes = await responseRecipes.json()
 
-    for( const recipe of recipes ) {
-        recipeList.push(`${recipe.name}(${recipe.ingredients.join(', ')})`)
-    }
-    prompt += recipeList.join(', ')
-
     // Products
-    const responseProducts = await fetch(`${process.env.HOST}/api/products`, { cache: 'no-cache' })
+    const responseProducts = await fetch(`${process.env.HOST}/api/products`)
     const products = await responseProducts.json()
 
-    for( const product of products ) {
-        productList.push(`${product.name}(${product.quantity} por ${product.price}$)`)
-    }
-    prompt += 'Y a continuacion la lista de productos con su respectivos precios'
-    prompt += productList.join(', ')
-    prompt += 'Por favor hazme con esta informacion mi lista de compras y me das por favor el total a gastar.'
-    prompt += 'Limitate a solo presentar la lista de compras como una tabla sin ningun comentario o explicacion'
-
-    const response = await fetch(`${process.env.HOST}/api/gpt`, {
-        method:'post',
-        body: JSON.stringify({
-            prompt: prompt
-        })
-    })
-    const { choices } = await response.json()
-
+    const [prompt1, list] = await generateShoppingList(products, recipes)
+    const [prompt2, menu] = await generateMenu(list, recipes);
 
 
     return <div>
-        <p><b>Prompt: </b> {prompt}</p>
-        {/* <p><b>Result: </b> {choices[0].message.content}</p>> */}
-        <div>
-            <MarkdownTable content={choices[0].message.content} />
+        <p>{prompt1}</p>
+        <p>{list}</p>
+        <div style={{ marginTop:15, marginBottom:15 }}>
+            <MarkdownTable content={list} />
+        </div>
+        <p>{prompt2}</p>
+        <p>{menu}</p>
+        <div style={{ marginTop:15 }}>
+            <MarkdownTable content={menu} />
+        </div>
+        <div style={{ display:'flex', justifyContent:'center', alignItems:'center', marginTop:'50px' }}>
+            <Link href='/products' className='button'>Volver</Link>
         </div>
     </div>
 }

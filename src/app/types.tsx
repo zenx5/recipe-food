@@ -7,5 +7,12 @@ export type productType = {
     name: string,
     price: number,
     active: boolean,
-    isPackaged: boolean
+    quantity: string
+}
+
+export type recipeType = {
+    id: number,
+    name: string,
+    type: Array<string>,
+    ingredients: Array<string>
 }

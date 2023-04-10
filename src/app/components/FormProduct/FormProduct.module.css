@@ -1,0 +1,80 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1.8rem;
+    box-shadow: 0 0 5px #a0a0a0;
+    border-radius: 0.5rem;
+    margin:auto;
+    width: fit-content;
+    padding: 2.2rem;
+    align-self: center;
+    justify-self: center;
+}
+
+.row {
+    display: flex;
+    gap:20px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.input {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 1px solid #a0a0a0;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+}
+.active, .deactive {
+    display: flex;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    width: 4.5rem;
+    border-radius: 2rem;
+    border: 1px inset #000a;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.deactive {
+    background-color: #8BC34A;
+}
+
+.active::after, .deactive::after {
+    position: relative;
+    display: block;
+    content:' ';
+    border:1px solid #e0e0e0;
+    background-color: #e0e0e0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 3px black;
+    transition: left 500ms;
+}
+
+.active::after {
+    left:-1rem;
+}
+
+.deactive::after {
+    left:1rem;
+}
+
+.checkbox input {
+    opacity: 0;
+}

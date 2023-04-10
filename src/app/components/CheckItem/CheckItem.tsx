@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
-import styles from './CheckItem.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons'
+
 
 export default function CheckItem ({ id, defaultState }:{ id:number, defaultState:Boolean }) {
     const [active, setActive] = useState( defaultState )
-    const { host } = document.location
+    const { host } = document?.location || ''
     const handlerToggleActive = async () => {
         const response = await fetch(`http://${host}/api/products/${id}`, {
             method:'put',
@@ -16,8 +18,6 @@ export default function CheckItem ({ id, defaultState }:{ id:number, defaultStat
         setActive( prev => product.active )
     }
 
-    return <button
-        className={ active ? styles.active : styles.deactive }
-        onClick={ handlerToggleActive }
-    />
+    return <FontAwesomeIcon icon={active ? faCheckSquare : faSquare} onClick={handlerToggleActive}/>
+
 }
