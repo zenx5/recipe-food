@@ -11,7 +11,7 @@ export default function DeleteAction ({ id }:{ id:number }) {
             await fetch(`/api/products/${id}`, {
                 method:'delete'
             })
-            document.location.reload()
+            window.document.location.reload()
         } catch (error) {
             console.log( error )
         }

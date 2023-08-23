@@ -67,7 +67,7 @@ export default function FormProduct ({ product }:{ product:productType }) {
                     quantity
                 })
             })
-            document.location.pathname = id ? `/products/${id}` : '/products'
+            window.document.location.pathname = id ? `/products/${id}` : '/products'
         } catch ( error ) {
             console.log( error )
         }
