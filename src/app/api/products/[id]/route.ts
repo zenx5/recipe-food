@@ -12,7 +12,7 @@ export async function GET(request: Request, { params }:{params:Params}) {
     const { id } = params
     const product = await prisma.product.findUnique({
         where:{
-            id: parseInt(id)
+            id: parseInt(id as string)
         }
     })
 
@@ -25,7 +25,7 @@ export async function PUT(request: NextRequest, { params }:{params:Params}) {
     const data = await request.json()
     const product = await prisma.product.update({
         where: {
-            id: parseInt(id)
+            id: parseInt(id as string)
         },
         data
     })
@@ -41,7 +41,7 @@ export async function DELETE(request: NextRequest, { params }:{params:Params}) {
     try{
         product = await prisma.product.delete({
             where: {
-                id: parseInt( id )
+                id: parseInt(id as string)
             }
         })
     } catch ( error ) {
