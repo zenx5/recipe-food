@@ -14,8 +14,9 @@ export default function FormProduct ({ product }:{ product:productType }) {
         active:activeDefault = false,
         quantity:quantityDefault = ''
     } = product
+    //crea o dame tipo de dato para required
 
-    const [required, setRequired] = useState(null)
+    const [required, setRequired] = useState<any>(null)
     const [name, setName] = useState(nameDefault)
     const [price, setPrice] = useState(priceDefault)
     const [active, setActive] = useState(activeDefault)
